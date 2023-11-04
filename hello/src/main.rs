@@ -1,5 +1,33 @@
+use std::env;
+use std::str::FromStr;
+
 fn main() {
     println!("Hello, world!");
+
+    // 初始化数组向量
+    let mut numbers = Vec::new();
+
+    // 循环获取的命令行参数，并转换为u64整数后放入numbers
+    for arg in env::args().skip(1) {
+        numbers.push(u64::from_str(&arg)
+        .expect("error parsing argument"));
+    }
+
+    // 如果数组长度为0， 提示错误并退出程序
+    if numbers.len() == 0 {
+        eprint!("Usage: gcd NUMBER ...");
+        std::process::exit(1);
+    }
+
+    // 获取第一个数字，并循环执行最大公约数函数
+    let mut d = numbers[0];
+    for m in &numbers[1..] {
+        d = gcd(d, *m)
+    }
+
+    // 打印最大公约数
+    print!("The greatest common divisor of {:?} is {}", numbers, d);
+
     let _max = gcd(1, 4);
     
 }
