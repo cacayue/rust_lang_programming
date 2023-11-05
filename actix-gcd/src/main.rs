@@ -1,4 +1,4 @@
-use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use actix_web::{ post, web, App, HttpResponse, HttpServer, Responder};
 use actix_web::http::header::ContentType;
 use serde::Deserialize;
 
