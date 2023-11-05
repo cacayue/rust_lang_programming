@@ -9,6 +9,9 @@ fn main() {
     table.insert("2".to_string(), vec!["2_1".to_string(), "2_2".to_string(), "2_3".to_string()]);
     show(&table);
     assert_eq!(table["1"][0], "1_1");
+    println!("  sort show");
+    sort_works(&mut table);
+    show(&table);
 }
 
 fn show(table: &Table){
@@ -18,6 +21,12 @@ fn show(table: &Table){
         for work in works {
             print!("  {}",work);
         }
+    }
+}
+
+fn sort_works(table: &mut Table){
+    for (_artist, works) in table {
+        works.sort_by(|a, b| b.cmp(&a));
     }
 }
 
